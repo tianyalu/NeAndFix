@@ -2,10 +2,12 @@
 说明：本文所示代码在Android5.1的模拟器上运行成功了，但是基于`AndFix`本身的限制，在我的米6 8.0真机上未运行成功。  
 ## 1.1 AndFix热修复原理分析
 `AndFix` GitHub地址：[https://github.com/alibaba/AndFix](https://github.com/alibaba/AndFix)  
-The implementation principle of AndFix is method body's replacing:  
+### 1.1.1 The implementation principle of AndFix is method body's replacing:  
+
 ![image](https://github.com/tianyalu/NeAndFix/raw/master/show/principle.png)  
 
-热修复整体流程：  
+### 1.1.2 热修复整体流程：  
+
 ![image](https://github.com/tianyalu/NeAndFix/raw/master/show/process.png)   
 
 
