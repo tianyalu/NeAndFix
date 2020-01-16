@@ -131,6 +131,7 @@ namespace art {
         //AOT模式是”Ahead of time”，在安装时将dex code 优化成机器码，运行时直接执行机器码执行。调用这个方法时会调用entry_point_from_quick_compiled_code_，然后跳转执行。
         class ArtMethod : public Object {
         public:
+            //uint32_t number; //小米5加的字段
             // Field order required by test "ValidateFieldOrderOfJavaCppUnionClasses".
             // The class we are a part of.
             uint32_t declaring_class_;

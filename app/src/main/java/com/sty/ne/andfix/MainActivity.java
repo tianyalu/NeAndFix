@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DexManager.getInstance().setContext(MainActivity.this);
                 DexManager.getInstance().loadDex(new File(Environment.getExternalStorageDirectory()
-                        + "/sty","hotfix.dex"));
+                        + "/sty","Calculator.dex"));
             }
         });
 

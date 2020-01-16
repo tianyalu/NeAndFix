@@ -15,7 +15,8 @@ Java_com_sty_ne_andfix_DexManager_replace(JNIEnv *env, jobject thiz, jobject bug
     art::mirror::ArtMethod *bugArtMethod = reinterpret_cast<art::mirror::ArtMethod *>(env->FromReflectedMethod(bug_method));
     //获取修复好的Method的ArtMethod
     art::mirror::ArtMethod *fixArtMethod = reinterpret_cast<art::mirror::ArtMethod *>(env->FromReflectedMethod(fixed_method));
-    
+
+    //art_5_1
     reinterpret_cast<art::mirror::Class*>(fixArtMethod->declaring_class_)->class_loader_ =
             reinterpret_cast<art::mirror::Class*>(bugArtMethod->declaring_class_)->class_loader_; //for plugin classloader
     reinterpret_cast<art::mirror::Class*>(fixArtMethod->declaring_class_)->clinit_thread_id_ =
@@ -40,4 +41,12 @@ Java_com_sty_ne_andfix_DexManager_replace(JNIEnv *env, jobject thiz, jobject bug
             fixArtMethod->ptr_sized_fields_.entry_point_from_jni_;
     bugArtMethod->ptr_sized_fields_.entry_point_from_quick_compiled_code_ =
             fixArtMethod->ptr_sized_fields_.entry_point_from_quick_compiled_code_;
+
+    //小米5：5.1系统，改了ArtMethod结构体字段, 增加了一个number字段
+//    bugArtMethod->declaring_class_ = fixArtMethod->declaring_class_;
+//    //  在内存上是下面：
+//    //    (uint32_t*)(bugArtMethod + 0) = (uint32_t*)(fixArtMethod + 0);
+//        //小米5，第一个字段增加为 number后, 49行代码实际执行的操作是：
+//    bugArtMethod->number = fixArtMethod->declaring_class_;
+
 }
